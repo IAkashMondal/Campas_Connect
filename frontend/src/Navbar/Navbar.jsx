@@ -1,7 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import style from "./navbar.module.css";
-import Logo from './App Logo.png'
-
 import {
   Box,
   Button,
@@ -10,17 +9,28 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import Logo from "./App Logo.png";
+import { useEffect, useState } from "react";
+import jwt_decode from "jwt-decode";
+import { ClearFunc, logoutFunc } from "../Redux/user/user.action";
 
 const Navbar = () => {
-  const [userData, setUserData] = useState({name:"Abhishek", role:"user"});
-  const [loginData, setLoginData] = useState({name:"Abhishek"})
+  const { loginData } = useSelector((store) => store.User);
+  const [useData, setUserData] = useState({});
+  const dispatch = useDispatch();
   const toast = useToast();
 
+  // -------------- (Token Decode) ---------------
+  useEffect(() => {
+    if (loginData) {
+      setUserData(jwt_decode(loginData.token));
+    }
+  }, [loginData]);
 
   // --------------- (Log out) -------------------
   const handleLogout = () => {
+    dispatch(logoutFunc());
     // ------------ Alert----------
     toast({
       title: "Log out Successfully!",
@@ -29,7 +39,10 @@ const Navbar = () => {
       isClosable: true,
       position: "top",
     });
-    setUserData(Object);
+    setTimeout(() => {
+      dispatch(ClearFunc());
+    }, 2);
+    setUserData({});
   };
 
   return (
@@ -40,10 +53,10 @@ const Navbar = () => {
     >
       <Link to="/">
         <Image
-          width={["30px", "30px", "70px", "70px"]}
+          width={["30px", "30px", "65px", "65px"]}
           borderRadius={50}
           src={Logo}
-          alt="logo"
+          alt="Logo"
         />
       </Link>
       <SimpleGrid
@@ -55,9 +68,9 @@ const Navbar = () => {
         <Link to="/">
           <Button>Chat</Button>
         </Link>
-        {userData.role === "admin" ? (
-          <Link to="/admin">
-            <Button>Admin</Button>
+        {useData.role == "profile" ? (
+          <Link to="/profile">
+            <Button>profile</Button>
           </Link>
         ) : (
           ""
@@ -66,7 +79,9 @@ const Navbar = () => {
         {/* ---------- (Conditional rendering) ------------*/}
         {loginData ? (
           <>
-            <Button>Hi: {userData.name}</Button>
+            <Link to="/profile">
+              <Button>Hi: {useData.name}</Button>
+            </Link>
             <Button onClick={handleLogout}>Log out</Button>
           </>
         ) : (
@@ -87,10 +102,10 @@ const Navbar = () => {
             <u>Chat</u>
           </Text>
         </Link>
-        {userData.role == "admin" ? (
-          <Link to="/admin">
+        {useData.role == "profile" ? (
+          <Link to="/profile">
             <Text fontWeight={700}>
-              <u>Admin</u>
+              <u>Profile</u>
             </Text>
           </Link>
         ) : (
@@ -100,9 +115,11 @@ const Navbar = () => {
         {/* ---------- (Conditional rendering) ------------*/}
         {loginData ? (
           <>
-            <Text fontWeight={700}>
-              Hi: <span style={{ color: "red" }}>{userData.name}</span>
-            </Text>
+            <Link to="/profile">
+              <Text fontWeight={700}>
+                Hi: <span style={{ color: "red" }}>{useData.name}</span>
+              </Text>
+            </Link>
             <Text
               fontWeight={700}
               onClick={handleLogout}
