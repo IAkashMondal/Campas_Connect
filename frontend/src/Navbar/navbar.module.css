@@ -1,0 +1,35 @@
+.maindiv {
+    background: #fdfcfb;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .options {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .options > a > button {
+    background: #201a0b;
+    color: #ffff;
+  }
+  .options > a > button:hover {
+    background: #613f29;
+    color: #ffff;
+  }
+  
+  .options > button {
+    background: #dc3544;
+    color: #ffff;
+  }
+  .options > button:hover {
+    background: #613429;
+    color: #ffff;
+  }
