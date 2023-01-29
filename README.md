@@ -1,9 +1,9 @@
 # Campas_Connect
 a message service app, For Our education system, Where Teachers and students can connect with each others with group or 2 person
 ## Deployment Link
-- [vercel](https://campus-connect-eight.vercel.app/)
+- [Website Deployed Link](https://campus-connect-eight.vercel.app/)
 
-- [Backend link](https://campas-connected-hnhe.onrender.com/)
+- [Backend Deployed link](https://campas-connected-hnhe.onrender.com/)
 
 ## Tech Stack
 ### FrontEnd
@@ -43,7 +43,7 @@ a message service app, For Our education system, Where Teachers and students can
 
 ![Chats_campus](https://user-images.githubusercontent.com/102036593/215347042-369ea297-d524-451c-b2ff-9577eec74c77.jpg)
 
-### Credit for few images npm goes to their original owners reslecttivly such as 
+### Credit Note:
  wix,vector images,npm pakages owners, vercel and render.
 
 # Thankyou for visitng our website
