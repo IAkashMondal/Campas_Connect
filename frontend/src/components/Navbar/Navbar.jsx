@@ -10,10 +10,11 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import Logo from "./App Logo.png";
+import Logo from "../../Assets/campusConnect.jpeg";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
-import { ClearFunc, logoutFunc } from "../Redux/user/user.action";
+import { ClearFunc, logoutFunc } from "../../Redux/user/user.action";
+
 
 const Navbar = () => {
   const { loginData } = useSelector((store) => store.User);

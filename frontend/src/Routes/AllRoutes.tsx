@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { ChatSection } from "../components/ChatPage/ChatSection";
-import Home from "../components/Home";
 import Profile from "../components/Profile";
 import Login from "../components/Signup-login/Login";
 import Signup from "../components/Signup-login/Signup";

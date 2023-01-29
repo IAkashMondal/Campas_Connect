@@ -64,7 +64,7 @@ const Signup = () => {
             <Input name="name" onChange={handleChange} value={form.name} required bg="#ffff" placeholder='Name' />
             <Input name="email" onChange={handleChange} value={form.email} required bg="#ffff" placeholder='Email' type="email" />
             <Input name="password" onChange={handleChange} value={form.password} required bg="#ffff" placeholder='Password' type="password" />
-            <Button type="submit">
+            <Button isDisabled={loading} type="submit">
             {loading ? "loading..." : "Sign up" }
             </Button>
         </form>

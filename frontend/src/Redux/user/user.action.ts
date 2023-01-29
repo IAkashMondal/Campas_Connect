@@ -18,12 +18,15 @@ type signupData = {
 export const SignupApi = (form:signupData) => async (dispatch:Function) => {
   dispatch({ type: loading });
   try {
-    const res = await axios.post("https://kgs-backend.onrender.com/user/signup", {
-      name: form.name,
-      email: form.email,
-      password: form.password,
-      role: "user",
-    });
+    const res = await axios.post(
+      "https://campas-connected-hnhe.onrender.com/users/register",
+      {
+        name: form.name,
+        email: form.email,
+        password: form.password,
+        role: "user",
+      }
+    );
     dispatch({ type: signup_success, payload: res.data });
   } catch (e) {
     dispatch({ type: failed });

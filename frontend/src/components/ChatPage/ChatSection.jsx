@@ -85,7 +85,7 @@ export const ChatSection = () => {
     const [message,setMessage] = useState("");
     const [chats,setChats] = useState([]);
     const [ht,setHt] = useState(window.outerHeight);
-    const [backgroundImg,setBackgroundImg] = useState('https://i.pinimg.com/originals/e3/42/aa/e342aa99d92cb8660fa1918986c595d0.gif')
+    const [backgroundImg, setBackgroundImg] = useState('https://img.freepik.com/free-photo/black-concrete-wall_53876-92805.jpg?w=2000&t=st=1675015681~exp=1675016281~hmac=d720c32631d9dafc155cab72609d4122df2bf2cd72fde5991bf274876c6ab849')
     const [backImgUrl,setBackImgUrl]= useState("");
     const [menu,setMenu] = useState((window.outerWidth < 768)? true : false);
     const [back,setBack] = useState(true);
