@@ -4,6 +4,7 @@ import { AlertDialog, AlertDialogBody, AlertDialogContent,
    Image,Modal,ModalOverlay,ModalContent,ModalHeader,
    ModalCloseButton,ModalBody,ModalFooter,
    Input,
+   useToast,
    } from "@chakra-ui/react"
 import { useState } from "react";
 import { useRef } from "react"
@@ -11,6 +12,8 @@ import { useRef } from "react"
 export const Group = ({users}) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const cancelRef = useRef();
+    const toast = useToast()
+
     const [gc,setGc] = useState({
       name : '',
       members : []
@@ -21,6 +24,17 @@ export const Group = ({users}) => {
         console.log(gc)
         if(gc.name=='' || gc.members.length <= 0){
           console.log("error")
+          toast({
+            title: 'Error',
+            status: 'error',
+            isClosable: true,
+          })
+        }else{
+          toast({
+            title: 'Group created.',
+            status: 'success',
+            isClosable: true,
+          })
         }
     }
 
@@ -37,7 +51,7 @@ export const Group = ({users}) => {
                     m='auto'
                     mb='10px'
                     onClick={()=>{
-                        onOpen()
+                        onOpen();
                     }}
                     >
                         Create Group +
