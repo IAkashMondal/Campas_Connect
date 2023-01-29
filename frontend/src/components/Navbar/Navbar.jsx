@@ -103,7 +103,7 @@ const Navbar = () => {
             <u>Chat</u>
           </Text>
         </Link>
-        {useData.role == "profile" ? (
+        {useData.role === "profile" ? (
           <Link to="/profile">
             <Text fontWeight={700}>
               <u>Profile</u>
