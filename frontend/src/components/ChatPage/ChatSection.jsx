@@ -1,10 +1,11 @@
 import { useEffect ,  useState } from "react";
-import { SimpleGrid,Image, Text, Heading, Box, InputGroup, Input, InputRightElement, Button } from "@chakra-ui/react";
+import { SimpleGrid,Image, Text, Heading, Box, InputGroup, Input, InputRightElement, Button, Alert, AlertIcon } from "@chakra-ui/react";
 import { Search, SearchBar } from "./Search";
 import { Group } from "./Group";
 import { useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import { ArrowBackIcon, HamburgerIcon } from '@chakra-ui/icons';
 
 const AllUsers = [
     {
@@ -169,7 +170,7 @@ export const ChatSection = () => {
         </Box> */}
         <SimpleGrid mt='79px' bg='blue.100' p='10px' boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px" gridTemplateColumns={menu ? "1fr" :'repeat(2,1fr)'} >
             <SearchBar alignSelf={"center"} users={users} getChatsfn={getChatsfn} setPerson={setPerson} setBack={setBack} />
-            <Image justifySelf='flex-end' mr='15px' onClick={showProfilefn} src={logo} alt = 'logo' borderRadius='full' boxSize='40px'/>
+            <a href="/profile" style={{justifySelf:'flex-end', mr:'15px' }} onClick={showProfilefn}  ><Image src={logo} alt = 'logo' borderRadius='full' boxSize='40px'/></a>
         </SimpleGrid>
         <SimpleGrid h={`${ht-245}px`} display='grid' gridTemplateColumns={menu ? "100%" : "320px 1fr"}>
 
@@ -222,7 +223,7 @@ export const ChatSection = () => {
                 <SimpleGrid>
                 <SimpleGrid display={menu?"grid" : "flex"} justifyContent={menu?"" : 'space-between'} >
                             <SimpleGrid display='flex' gap='20px'>
-                                {menu ? <Box onClick={(e)=>setBack(true)}>Back</Box> : null}
+                                {menu ? <Box onClick={(e)=>setBack(true)}><ArrowBackIcon/></Box> : null}
                                 <Image
                                     borderRadius='full'
                                     boxSize='50px'
@@ -246,7 +247,7 @@ export const ChatSection = () => {
                                         setBackImgUrl("");
                                     }} >Add</Button>
                                 </Box>
-                                <Button onClick={()=>showChatterProfile(person)} >More</Button>
+                                <Button onClick={()=>showChatterProfile(person)} ><HamburgerIcon/></Button>
                             </Box>
                         </SimpleGrid>
                 </SimpleGrid>
@@ -256,7 +257,9 @@ export const ChatSection = () => {
 // ***********************************************************************************************************
                         chats.map((el,i)=>{
                             return <SimpleGrid key={i} justifyContent={(el.sender==='2')? "start" : "end"} p='10px' >
-                                <Text  bg={(el.sender==='2')? "#6ACDE5" : "green.300"} p='5px' border={'1px solid blue'} borderRadius='10px' display='inline-block' >{el.msg}</Text>
+                                <Box display='inline-block'>
+                                    <Text  bg={(el.sender==='2')? "#6ACDE5" : "green.300"} p='5px' border={'1px solid blue'} borderRadius='10px' display='inline-block' >{el.msg}</Text>
+                                </Box>
                             </SimpleGrid>
                         })
                     }
